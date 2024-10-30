@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 input[type="text"]:focus {
-  outline: none; /* Elimina el borde predeterminado del navegador */
-  border: none; /* Remueve cualquier borde especificado */
+  outline: none;
+  border: none;
 }
