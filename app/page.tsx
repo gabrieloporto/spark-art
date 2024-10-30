@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <>
       <header className="flex justify-between items-center">
-        <Image alt="logo" src="/logo.jpg" width="100" height="100" />
+        <Image alt="logo" src="/logo.webp" width="100" height="100" />
         {imageUrl && !loading ? (
           <a href={imageUrl} download="imagen-generada.jpg">
             <button className="bg-[#577da0] p-4 hover:bg-[#446485] rounded-sm">
