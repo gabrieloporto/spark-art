@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
@@ -8,8 +8,11 @@ export default function Home() {
   const [imageUrl, setImageUrl] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const promptRef = useRef("");
+
   const handleGenerateImage = async () => {
     setLoading(true);
+    promptRef.current = prompt; // Almacena el prompt actual en la referencia
     try {
       const response = await fetch("/api/generate-image", {
         method: "POST",
@@ -27,15 +30,33 @@ export default function Home() {
     }
   };
 
+  const downloadImage = async () => {
+    try {
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `SparkArt_${promptRef.current}.jpg`; // Usa la referencia como nombre
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading image:", error);
+    }
+  };
+
   return (
     <>
       <header className="flex justify-between items-center mt-8">
         <Image alt="logo" src="/logo.webp" width={80} height={80} />
         {imageUrl && !loading ? (
-          <a
-            href={imageUrl}
+          <button
+            onClick={downloadImage}
             className="bg-[#577da0] p-4 hover:bg-[#446485] rounded-sm"
-            download="image-generate.jpg"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +74,7 @@ export default function Home() {
               <path d="M7 11l5 5l5 -5" />
               <path d="M12 4l0 12" />
             </svg>
-          </a>
+          </button>
         ) : null}
       </header>
 
@@ -74,7 +95,71 @@ export default function Home() {
       ) : (
         <div className="flex items-center justify-center w-full h-80 bg-[#293747]">
           <p className="text-center text-xl text-white p-4">
-            <strong className="text-2xl">¡Te doy la Bienvenida!</strong>
+            <strong className="text-2xl flex items-center justify-center gap-4">
+              <svg
+                width={30}
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                aria-hidden="true"
+                role="img"
+                preserveAspectRatio="xMidYMid meet"
+                fill="#ffffff"
+              >
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    fill="#f0fdfc"
+                    d="M210.3 65.5c28.8 7.3 51.4 29.9 58.7 58.7c.7 2.8 4.3 2.8 5 0c7.3-28.8 29.9-51.4 58.7-58.7c2.8-.7 2.8-4.3 0-5c-28.8-7.3-51.4-29.9-58.7-58.7c-.7-2.8-4.3-2.8-5 0c-7.3 28.8-29.9 51.4-58.7 58.7c-2.8.7-2.8 4.3 0 5z"
+                  ></path>
+                  <path
+                    fill="#cdfaf8"
+                    d="M6.7 188.3c50.8 12.9 90.8 52.9 103.7 103.7c1.2 4.9 7.5 4.9 8.8 0c12.9-50.8 52.9-90.8 103.7-103.7c4.9-1.2 4.9-7.5 0-8.8C172 166.7 132 126.7 119.2 75.9c-1.2-4.9-7.5-4.9-8.8 0c-12.9 50.8-52.9 90.8-103.7 103.7c-4.9 1.2-4.9 7.5 0 8.7z"
+                  ></path>
+                  <path
+                    fill="#84F2EE"
+                    d="M180 350.7c76 19.3 135.9 79.1 155.1 155.1c1.9 7.3 11.3 7.3 13.1 0c19.3-76 79.1-135.9 155.1-155.1c7.3-1.9 7.3-11.3 0-13.1c-76-19.3-135.9-79.1-155.1-155.1c-1.9-7.3-11.3-7.3-13.1 0c-19.3 76-79.1 135.9-155.1 155.1c-7.3 1.8-7.3 11.2 0 13.1z"
+                  ></path>
+                </g>
+              </svg>
+              ¡Te doy la Bienvenida!{" "}
+              <svg
+                width={30}
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                aria-hidden="true"
+                role="img"
+                preserveAspectRatio="xMidYMid meet"
+                fill="#ffffff"
+              >
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    fill="#f0fdfc"
+                    d="M210.3 65.5c28.8 7.3 51.4 29.9 58.7 58.7c.7 2.8 4.3 2.8 5 0c7.3-28.8 29.9-51.4 58.7-58.7c2.8-.7 2.8-4.3 0-5c-28.8-7.3-51.4-29.9-58.7-58.7c-.7-2.8-4.3-2.8-5 0c-7.3 28.8-29.9 51.4-58.7 58.7c-2.8.7-2.8 4.3 0 5z"
+                  ></path>
+                  <path
+                    fill="#cdfaf8"
+                    d="M6.7 188.3c50.8 12.9 90.8 52.9 103.7 103.7c1.2 4.9 7.5 4.9 8.8 0c12.9-50.8 52.9-90.8 103.7-103.7c4.9-1.2 4.9-7.5 0-8.8C172 166.7 132 126.7 119.2 75.9c-1.2-4.9-7.5-4.9-8.8 0c-12.9 50.8-52.9 90.8-103.7 103.7c-4.9 1.2-4.9 7.5 0 8.7z"
+                  ></path>
+                  <path
+                    fill="#84F2EE"
+                    d="M180 350.7c76 19.3 135.9 79.1 155.1 155.1c1.9 7.3 11.3 7.3 13.1 0c19.3-76 79.1-135.9 155.1-155.1c7.3-1.9 7.3-11.3 0-13.1c-76-19.3-135.9-79.1-155.1-155.1c-1.9-7.3-11.3-7.3-13.1 0c-19.3 76-79.1 135.9-155.1 155.1c-7.3 1.8-7.3 11.2 0 13.1z"
+                  ></path>
+                </g>
+              </svg>
+            </strong>
             <br />
             <br />
             Describe tu idea,
