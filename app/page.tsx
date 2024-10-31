@@ -16,6 +16,7 @@ export default function Home() {
     loading,
     promptRef,
     handleGenerateImage,
+    error,
   } = useGenerateImage();
 
   return (
@@ -40,6 +41,8 @@ export default function Home() {
         prompt={prompt}
         onChangePrompt={(e) => setPrompt(e.target.value)}
       />
+
+      {error && <p className="text-red-500 text-xs">{error}</p>}
     </>
   );
 }
