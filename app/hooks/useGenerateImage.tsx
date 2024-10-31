@@ -5,8 +5,24 @@ export default function useGenerateImage() {
   const [prompt, setPrompt] = useState("");
   const promptRef = useRef("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  // Función de validación
+  const validateInput = (input: string | undefined) => {
+    const regex = /^[a-zA-Z0-9\s]+$/; // Solo letras, números y espacios
+    if (!input) {
+      setError("El campo no puede estar vacío.");
+      return false;
+    } else if (!regex.test(input)) {
+      setError("Solo se permiten letras, números y espacios.");
+      return false;
+    }
+    setError("");
+    return true;
+  };
 
   const handleGenerateImage = async () => {
+    if (!validateInput(prompt)) return;
     setLoading(true);
     promptRef.current = prompt;
     try {
@@ -33,5 +49,6 @@ export default function useGenerateImage() {
     promptRef,
     loading,
     handleGenerateImage,
+    error,
   };
 }
