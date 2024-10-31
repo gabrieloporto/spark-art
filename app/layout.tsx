@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.className} antialiased flex flex-col justify-between mx-[15%] lg:mx-[25%] bg-[#293747] text-[#eaeef4] gap-2 overflow-hidden`}
+        className={`${montserrat.className} antialiased flex flex-col justify-between mx-[15%] lg:mx-[25%] bg-[#293747] text-[#eaeef4] gap-2 overflow-hidden min-h-screen my-8`}
       >
         {children}
       </body>
