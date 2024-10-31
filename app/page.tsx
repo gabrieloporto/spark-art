@@ -40,9 +40,8 @@ export default function Home() {
         loading={loading}
         prompt={prompt}
         onChangePrompt={(e) => setPrompt(e.target.value)}
+        error={error}
       />
-
-      {error && <p className="text-red-500 text-xs">{error}</p>}
     </>
   );
 }

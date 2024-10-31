@@ -5,6 +5,7 @@ export interface AppForm {
   handleGenerateImage: () => void;
   loading: boolean;
   onChangePrompt: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  error: string;
 }
 
 export interface GeneratedSparkImage {
