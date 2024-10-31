@@ -11,7 +11,7 @@ export default async function downloadImage({
 
     const link = document.createElement("a");
     link.href = url;
-    link.download = `SparkArt_${promptRef.current}.jpg`;
+    link.download = `SparkArt - ${promptRef.current}.jpg`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
