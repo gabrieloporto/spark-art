@@ -1,5 +1,5 @@
 import { AppForm } from "../lib/types";
-import { CreateImageIcon } from "./Icons";
+import { CreateImageIcon, ErrorIcon } from "./Icons";
 
 export default function Form({
   prompt,
@@ -63,7 +63,12 @@ export default function Form({
           )}
         </button>
       </form>
-      {error && <p className="text-red-500 text-xs">{error}</p>}
+      {error && (
+        <p className="text-red-500 text-xs flex items-center justify-center gap-2">
+          {error}
+          <ErrorIcon />
+        </p>
+      )}
     </div>
   );
 }
