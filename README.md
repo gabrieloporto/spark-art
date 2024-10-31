@@ -5,6 +5,10 @@
   - [Tecnologías Utilizadas](#tecnologías-utilizadas)
   - [Estructura del Proyecto](#estructura-del-proyecto)
   - [Funcionamiento y Flujo de la Aplicación](#funcionamiento-y-flujo-de-la-aplicación)
+    - [Introducción de una Idea](#introducción-de-una-idea)
+    - [Generación de Imagen](#generación-de-imagen)
+    - [Almacenamiento en Cloudinary](#almacenamiento-en-cloudinary)
+    - [Visualización y Descarga](#visualización-y-descarga)
   - [Autor](#autor)
 
 # SparkArt
@@ -66,19 +70,27 @@ La aplicación se estructura en base a los siguientes archivos y carpetas:
 
 ## Funcionamiento y Flujo de la Aplicación
 
-1. **Introducción de una Idea**: El usuario ingresa una idea en la barra de texto y presiona el botón "Generar".
+### Introducción de una Idea
 
-![Imagen de Inicio]()
+El usuario ingresa una idea en la barra de texto y presiona el botón "Generar".
 
-2. **Generación de Imagen**: La API procesa el texto en Hugging Face, donde la idea se transforma en una imagen.
+![Imagen de Inicio](public/SparkArt-Welcome.webp)
 
-![Imagen de carga]()
+### Generación de Imagen
 
-3. **Almacenamiento en Cloudinary**: La imagen generada se almacena en Cloudinary y se obtiene una URL pública para la descarga.
+La API procesa el texto en Hugging Face, donde la idea se transforma en una imagen.
 
-4. **Visualización y Descarga**: La imagen se muestra en la aplicación, y el usuario tiene la opción de descargarla directamente.
+![Imagen de carga](public/SparkArt-Loading.webp)
 
-![Imagen generada]()
+### Almacenamiento en Cloudinary
+
+La imagen generada se almacena en Cloudinary y se obtiene una URL pública para la descarga.
+
+### Visualización y Descarga
+
+La imagen se muestra en la aplicación, y el usuario tiene la opción de descargarla directamente.
+
+![Imagen generada](public/SparkArt-Generated-Image.webp)
 
 ---
 
