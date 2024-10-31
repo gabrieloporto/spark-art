@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Tabla de contenidos
 
-## Getting Started
+- [SparkArt](#sparkart)
+  - [Descripción](#descripción-del-proyecto)
+  - [Tecnologías Utilizadas](#tecnologías-utilizadas)
+  - [Estructura del Proyecto](#estructura-del-proyecto)
+  - [Funcionamiento y Flujo de la Aplicación](#funcionamiento-y-flujo-de-la-aplicación)
+  - [Autor](#autor)
 
-First, run the development server:
+# SparkArt
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+SparkArt es una aplicación web que convierte ideas en imágenes generadas mediante inteligencia artificial. Desarrollada para permitir a los usuarios expresar su creatividad, SparkArt permite que cada idea se transforme en una representación visual única.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![SparkArt](/public/logo-readme.webp)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Descripción del Proyecto
 
-## Learn More
+SparkArt es una aplicación de generación de imágenes donde los usuarios simplemente describen su idea en texto y, mediante el uso de inteligencia artificial, reciben una imagen que representa esa idea. Este proceso es posible gracias a modelos avanzados de IA, alojados en Hugging Face y la integración con Cloudinary para almacenar y gestionar las imágenes generadas.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Proceso de Desarrollo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Para organizar y visualizar el flujo de la aplicación, cree un Sketch inicial utilizando **FigJam Board** de Figma. Esto facilitó tanto la creación del diseño como la planificación de la interfaz de usuario y el flujo general de la aplicación.
 
-## Deploy on Vercel
+![FigJam Board Sketch](public/Workflow.webp)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tecnologías Utilizadas
+
+- **Next.js**: Framework de React para el desarrollo web moderno, facilitando la creación de aplicaciones de alto rendimiento.
+- **React y React Hooks**: Facilitan la gestión del estado y los efectos secundarios de la aplicación.
+- **TypeScript**: Se utiliza para garantizar un código más limpio y reducir los errores de tipo en tiempo de desarrollo.
+- **Node.js** y **npm**: Herramientas esenciales para la creación de la aplicación Next.js y la gestión de dependencias.
+- **Tailwind CSS**: Para un diseño CSS rápido, personalizado y responsivo.
+- **Hugging Face Inference API**: Proporciona el modelo de IA para la generación de imágenes, específico para la transformación de texto a imagen.
+- **Figma**: Para organizar y visualizar el flujo de la aplicación, cree un Sketch inicial utilizando **FigJam Board** de Figma.
+- **Cloudinary**: Gestiona el almacenamiento y la entrega de las imágenes generadas.
+- **Tabler Icons**: Biblioteca SVG utilizada para la iconografía de la aplicación.
+
+---
+
+## Estructura del Proyecto
+
+La aplicación se estructura en base a los siguientes archivos y carpetas:
+
+## Estructura del Proyecto
+
+La aplicación se estructura en base a los siguientes archivos y carpetas:
+
+- **`app/page.tsx`**: Página principal, donde se maneja la interfaz y la interacción de usuario.
+- **`app/layout.tsx`**: Diseño general de la aplicación, con una configuración de estilo unificada.
+- **`app/components`**: Componentes reutilizables que mejoran la estructura de la interfaz.
+- **`app/lib/types.ts`**: Definición de tipados TypeScript que aseguran consistencia en la aplicación.
+- **`app/logic`**: Carpeta que centraliza la lógica de la aplicación.
+- **`app/hooks`**: Custom hooks que encapsulan lógica reutilizable en la app.
+- **`/pages/api/generate-image.ts`**: API interna que conecta con el servicio de Hugging Face para generar la imagen y luego la guarda en Cloudinary.
+- **`public`**: Carpeta de archivos públicos, donde se incluye el logo de la aplicación y otros recursos estáticos.
+- **`app/global.css`**: Estilos globales de la aplicación.
+- **`app/favicon.ico`**: Ícono de la aplicación para favicon.
+
+---
+
+## Funcionamiento y Flujo de la Aplicación
+
+1. **Introducción de una Idea**: El usuario ingresa una idea en la barra de texto y presiona el botón "Generar".
+
+![Imagen de Inicio]()
+
+2. **Generación de Imagen**: La API procesa el texto en Hugging Face, donde la idea se transforma en una imagen.
+
+![Imagen de carga]()
+
+3. **Almacenamiento en Cloudinary**: La imagen generada se almacena en Cloudinary y se obtiene una URL pública para la descarga.
+
+4. **Visualización y Descarga**: La imagen se muestra en la aplicación, y el usuario tiene la opción de descargarla directamente.
+
+![Imagen generada]()
+
+---
+
+## Autor
+
+- Sitio diseñado y desarrollado por [Gabriel Oporto](https://gabrieloporto.vercel.app).
