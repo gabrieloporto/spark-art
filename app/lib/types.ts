@@ -2,7 +2,7 @@ import { MutableRefObject } from "react";
 
 export interface AppForm {
   prompt: string;
-  handleGenerateImage: () => void;
+  handleGenerateImage: (event: React.MouseEvent<HTMLButtonElement>) => void;
   loading: boolean;
   onChangePrompt: (event: React.ChangeEvent<HTMLInputElement>) => void;
   error: string;

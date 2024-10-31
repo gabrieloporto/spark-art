@@ -21,7 +21,10 @@ export default function useGenerateImage() {
     return true;
   };
 
-  const handleGenerateImage = async () => {
+  const handleGenerateImage = async (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    e.preventDefault();
     if (!validateInput(prompt)) return;
     setLoading(true);
     promptRef.current = prompt;

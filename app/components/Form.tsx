@@ -22,8 +22,7 @@ export default function Form({
           disabled={loading}
         />
         <button
-          type="button"
-          onClick={handleGenerateImage}
+          onClick={(e) => handleGenerateImage(e)}
           className={`flex items-center justify-center gap-2 bg-[#577da0] px-4 py-2 rounded hover:bg-[#446485] rounded-r-full transition-all duration-150 ease-in-out ${
             loading && "opacity-50"
           }`}
