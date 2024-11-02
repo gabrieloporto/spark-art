@@ -51,10 +51,6 @@ Para organizar y visualizar el flujo de la aplicación, cree un Sketch inicial u
 
 La aplicación se estructura en base a los siguientes archivos y carpetas:
 
-## Estructura del Proyecto
-
-La aplicación se estructura en base a los siguientes archivos y carpetas:
-
 - **`app/page.tsx`**: Página principal, donde se maneja la interfaz y la interacción de usuario.
 - **`app/layout.tsx`**: Diseño general de la aplicación, con una configuración de estilo unificada.
 - **`app/components`**: Componentes reutilizables que mejoran la estructura de la interfaz.
