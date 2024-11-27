@@ -7,9 +7,8 @@ export default function useGenerateImage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Función de validación
   const validateInput = (input: string | undefined) => {
-    const regex = /^[a-zA-Z0-9\s]+$/; // Solo letras, números y espacios
+    const regex = /^[a-zA-Z0-9\s]+$/;
     if (!input) {
       setError("El campo no puede estar vacío.");
       return false;
